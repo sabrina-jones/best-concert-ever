@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <%= link_to "Best Concert Ever", root_path, class: "navbar-brand" %>
+    </div>
+
+  <% if user_signed_in? %>
+      <div class="navbar-form navbar-right white-text" id="<%= current_user.id %>">
+      Logged in as <strong><%= current_user.email %></strong>
+      <%= link_to "All Concerts", concerts_path, class:"btn btn-info" %>
+      <%= link_to "My Concert Reviews", user_path(current_user), class:"btn btn-info" %>
+      <%= link_to "Add Concert", new_concert_path, class:"btn btn-info" %>
+      <%= link_to "Review Concert",new_user_review_path(current_user), class:"btn btn-info" %>
+      <%= link_to "Logout", destroy_user_session_path, class:"btn btn-warning", method: "delete" %>
+    </div>
+
+  <% else %>
+     <div class="navbar-form navbar-right">
+     <%= link_to "Login", new_user_session_path, class:"btn btn-success" %>
+     <%= link_to "Signup", new_user_registration_path, class:"btn btn-primary" %>
+     </div>
+  <% end %>
+
+</nav>
